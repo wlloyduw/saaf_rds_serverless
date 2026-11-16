@@ -190,7 +190,7 @@ public class HelloPostgreSQL implements RequestHandler<Request, HashMap<String, 
 
         // Test properties file creation
         Properties properties = new Properties();
-        properties.setProperty("driver", "com.mysql.cj.jdbc.Driver");
+        properties.setProperty("driver", "org.postgresql.Driver");
         properties.setProperty("url","");
         properties.setProperty("username","");
         properties.setProperty("password","");
@@ -203,10 +203,10 @@ public class HelloPostgreSQL implements RequestHandler<Request, HashMap<String, 
           System.out.println("error creating properties file.")   ;
         }
 
-
         // Run the function
+        // Commented out here - uncomment for testing 
         //Response resp = lt.handleRequest(req, c);
-        System.out.println("The MySQL Serverless can't be called directly without running on the same VPC as the RDS cluster.");
+        System.out.println("The PostgreSQL Serverless function must be tested on an EC2 instance in the same VPC as the RDS cluster.");
         Response resp = new Response();
 
         // Print out function result
