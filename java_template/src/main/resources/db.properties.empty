@@ -1,6 +1,6 @@
 #
 #Thu Nov 01 00:00:00 PDT 2020
-password=
-url=
-driver=com.mysql.cj.jdbc.Driver
+driver=org.postgresql.Driver
+url=jdbc:postgresql://<RDS-endpoint>:5432/test?sslmode=require
 username=
+password=

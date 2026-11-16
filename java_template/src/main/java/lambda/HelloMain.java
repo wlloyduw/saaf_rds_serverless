@@ -110,6 +110,10 @@ public class HelloMain implements RequestHandler<HashMap<String, Object>, HashMa
                     public void log(String string) {
                         System.out.println("LOG:" + string);
                     }
+                    // No @Override here for compatibility with 1.1.0
+                    public void log(byte[] message) {
+                        System.out.println("LOG:" + new String(message, java.nio.charset.StandardCharsets.UTF_8));
+                    }
                 };
             }
         };

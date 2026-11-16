@@ -25,7 +25,7 @@ import java.util.HashMap;
  * @author Wes Lloyd
  * @author Robert Cordingly
  */
-public class HelloMySQL implements RequestHandler<Request, HashMap<String, Object>> {
+public class HelloPostgreSQL implements RequestHandler<Request, HashMap<String, Object>> {
 
     /**
      * Lambda Function Handler
@@ -76,7 +76,7 @@ public class HelloMySQL implements RequestHandler<Request, HashMap<String, Objec
                 ll.add(rs.getString("name"));
                 logger.log("col2=" + rs.getString("col2"));
                 logger.log("col3=" + rs.getString("col3"));
-            }
+            } 
             rs.close();
             con.close();
             r.setNames(ll);
@@ -161,12 +161,17 @@ public class HelloMySQL implements RequestHandler<Request, HashMap<String, Objec
                     public void log(String string) {
                         System.out.println("LOG:" + string);
                     }
+                    // No @Override here for compatibility with 1.1.0
+                    public void log(byte[] message) {
+                        System.out.println("LOG:" + new String(message, java.nio.charset.StandardCharsets.UTF_8));
+                    }
+
                 };
             }
         };
 
         // Create an instance of the class
-        HelloMySQL lt = new HelloMySQL();
+        HelloPostgreSQL lt = new HelloPostgreSQL();
 
         // Create a request object
         Request req = new Request();
