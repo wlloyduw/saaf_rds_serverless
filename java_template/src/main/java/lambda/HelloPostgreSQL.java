@@ -65,7 +65,10 @@ public class HelloPostgreSQL implements RequestHandler<Request, HashMap<String, 
             //Class.forName(driver);
             Connection con = DriverManager.getConnection(url,username,password);
             
-            PreparedStatement ps = con.prepareStatement("insert into mytable values('" + request.getName() + "','b','c');");
+            PreparedStatement ps = con.prepareStatement("insert into mytable (name, col2, col3) values(?, ?, ?);");
+            ps.setString(1, request.getName());
+            ps.setString(2, "b");
+            ps.setString(3, "c");
             ps.execute();
             ps = con.prepareStatement("select * from mytable;");
             ResultSet rs = ps.executeQuery();
